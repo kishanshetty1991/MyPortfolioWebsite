@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.sectionData {
+  height: 100vh;
+  border: 1px solid red;
+}
+

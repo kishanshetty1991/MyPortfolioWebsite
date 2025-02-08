@@ -1,0 +1,33 @@
+/* app.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9; /* Neutral background for better design */
+}
+
+.sectionData {
+  min-height: 100vh; /* Ensures it fills the viewport but adapts to content */
+  padding: 20px; /* Adds internal spacing */
+  display: flex; /* For flexible alignment */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  border: 1px solid #ddd; /* Light border for better visuals */
+  box-sizing: border-box; /* Ensures padding doesn’t overflow */
+}
+
+@media (max-width: 768px) {
+  .sectionData {
+    padding: 10px; /* Reduced padding for smaller screens */
+    flex-direction: column; /* Stack content vertically */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 14px; /* Adjust font sizes for smaller devices */
+  }
+  .sectionData {
+    padding: 8px;
+  }
+}
