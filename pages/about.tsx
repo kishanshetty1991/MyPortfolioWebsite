@@ -1,14 +1,23 @@
-import { Box, Button, Container, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Tooltip,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import { useThemeContext } from "@/components/ThemeProvider";
 import React, { useRef } from "react";
 import DownloadIcon from "@mui/icons-material/Download";
 import AwardIcon from "@mui/icons-material/EmojiEvents";
 import SchoolIcon from "@mui/icons-material/School";
 import moment from "moment";
-import { dancingScript, roboto } from "@/components/Navbar/Navbar";
+import { roboto } from "@/components/Navbar/Navbar";
 
 const About = () => {
   const component = useRef(null);
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
   const { mode } = useThemeContext();
 
   const calculateExperience = () => moment().year() - 2022;
@@ -108,25 +117,46 @@ const About = () => {
               future of technology.
             </Typography>
 
-            <Box
-              sx={{
-                mt: 3,
-                display: "flex",
-                justifyContent: { xs: "center", md: "flex-start" },
-              }}
-            >
-              <Button
-                variant="contained"
-                size="large"
-                endIcon={<DownloadIcon />}
-                onClick={(e) => {
-                  e.preventDefault(); // Prevents any unintended multiple triggers
-                  downloadResume();
-                }}
+            {isSmallScreen ? (
+              <Tooltip
+                title="Download Resume"
+                enterTouchDelay={0} // Instantly shows on tap
+                leaveTouchDelay={2000} // Stays visible for 2 seconds
               >
-                Resume
-              </Button>
-            </Box>
+                <>
+                  {"   "}
+                  <IconButton
+                    onClick={(e) => {
+                      e.preventDefault(); // Prevents any unintended multiple triggers
+                      downloadResume();
+                    }}
+                    color="primary"
+                    style={{
+                      border: 1,
+                      borderColor: "inherit",
+                      borderRadius: 50,
+                    }}
+                  >
+                    <DownloadIcon />
+                  </IconButton>
+                </>
+              </Tooltip>
+            ) : (
+              <div style={{ marginTop: 10 }}>
+                <br />
+                <Button
+                  variant="contained"
+                  size="large"
+                  endIcon={<DownloadIcon />}
+                  onClick={(e) => {
+                    e.preventDefault(); // Prevents any unintended multiple triggers
+                    downloadResume();
+                  }}
+                >
+                  Resume
+                </Button>
+              </div>
+            )}
           </Box>
 
           {/* Right Side - Experience & Education Cards */}
@@ -143,7 +173,7 @@ const About = () => {
               {/* Experience Card */}
               <Box
                 sx={{
-                  p: { xs: 2, sm: 4 }, // Adjust padding
+                  p: { xs: 1, sm: 4 }, // Adjust padding
                   width: { xs: "100%", sm: "80%" }, // Full width on very small screens
                   height: { xs: "auto", sm: 200 }, // Auto height for text wrapping on small devices
                   display: "flex",
@@ -180,7 +210,7 @@ const About = () => {
               {/* Education Card */}
               <Box
                 sx={{
-                  p: { xs: 2, sm: 4 }, // Adjust padding
+                  p: { xs: 1, sm: 3 }, // Adjust padding
                   width: { xs: "100%", sm: "80%" }, // Full width on very small screens
                   height: { xs: "auto", sm: 200 }, // Auto height for text wrapping on small devices
                   display: "flex",

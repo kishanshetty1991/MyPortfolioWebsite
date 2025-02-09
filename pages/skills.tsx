@@ -11,7 +11,7 @@ const Skills = () => {
   return (
     <Box
       sx={{
-        mt: { xs: 30, sm: 20, md: 10, lg: 5 },
+        mt: { xs: 20, sm: 5, md: 5, lg: 5 },
         px: { xs: 2, sm: 3, md: 4 },
         textAlign: "center",
       }}
