@@ -1,7 +1,7 @@
 import { Box, Button, Container, Typography } from "@mui/material";
 import { useThemeContext } from "@/components/ThemeProvider";
 import React, { useRef } from "react";
-import SendIcon from "@mui/icons-material/Send";
+import DownloadIcon from "@mui/icons-material/Download";
 import AwardIcon from "@mui/icons-material/EmojiEvents";
 import SchoolIcon from "@mui/icons-material/School";
 import moment from "moment";
@@ -12,6 +12,27 @@ const About = () => {
   const { mode } = useThemeContext();
 
   const calculateExperience = () => moment().year() - 2022;
+
+  const downloadResume = () => {
+    const resumePath = "/Kishan_Resume_Nov_24.pdf";
+
+    // Validate file type (Only allow PDF downloads)
+    if (!resumePath.endsWith(".pdf")) {
+      console.error("Invalid file type. Download blocked.");
+      return;
+    }
+
+    try {
+      const link = document.createElement("a");
+      link.href = resumePath;
+      link.setAttribute("download", "KishanShetty_Resume.pdf"); // Ensures download behavior
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error downloading resume:", error);
+    }
+  };
 
   const backColor =
     mode === "dark"
@@ -69,15 +90,18 @@ const About = () => {
             >
               I am a passionate <strong>Full-Stack Developer</strong> with
               expertise in the
-              <strong> MERN (MongoDB, Express.js, React, Node.js) Stack</strong>,
-              dedicated to building scalable and efficient web applications. I
+              <strong> MERN (MongoDB, Express.js, React, Node.js) Stack</strong>
+              , dedicated to building scalable and efficient web applications. I
               have also worked with
               <strong> Python, Java, and .NET Full-Stack</strong> technologies.
               Additionally, I have explored blockchain development with{" "}
               <strong> Solidity</strong>, contributing to smart contract-based
               applications. Beyond traditional web development, I am deeply
               interested in{" "}
-              <strong> Artificial Intelligence (AI) and Machine Learning</strong>
+              <strong>
+                {" "}
+                Artificial Intelligence (AI) and Machine Learning
+              </strong>
               , constantly learning and adapting to advancements in the field.
               My problem-solving mindset and passion for innovation drive me to
               create robust, efficient, and impactful solutions that shape the
@@ -91,8 +115,16 @@ const About = () => {
                 justifyContent: { xs: "center", md: "flex-start" },
               }}
             >
-              <Button variant="contained" size="large" endIcon={<SendIcon />}>
-                Send
+              <Button
+                variant="contained"
+                size="large"
+                endIcon={<DownloadIcon />}
+                onClick={(e) => {
+                  e.preventDefault(); // Prevents any unintended multiple triggers
+                  downloadResume();
+                }}
+              >
+                Resume
               </Button>
             </Box>
           </Box>
