@@ -18,7 +18,6 @@ import { useThemeContext } from "../ThemeProvider";
 import profilepic from "../../assets/snapMobile.png";
 import { Roboto, Dancing_Script } from "@next/font/google";
 import ThemeToggleButton from "../ThemeProviderButton";
-import Drawer from "@/components/Drawer";
 import Image from "next/image";
 
 const pages = ["Home", "About", "Skills", "Projects", "Contact"];
@@ -185,7 +184,6 @@ const Navbar = () => {
           </Toolbar>
         </Container>
       </AppBar>
-      <Drawer showDrawer={showDrawer} setShowDrawer={setShowDrawer} />
     </>
   );
 };
