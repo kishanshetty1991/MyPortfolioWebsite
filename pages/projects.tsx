@@ -1,6 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import React, { useRef } from "react";
-import SkillDataProvider from "@/components/SkillDataProvider";
 import { useThemeContext } from "@/components/ThemeProvider";
 import ProjectsProvider from "@/components/ProjectsProvider";
 
@@ -9,6 +8,7 @@ const Projects = () => {
   const { mode } = useThemeContext();
   const nameColor = mode === "dark" ? "text-slate-300" : "text-slate-800";
   const subNameColor = mode === "dark" ? "text-slate-500" : "text-slate-300";
+
   return (
     <Box
       sx={{
@@ -47,7 +47,7 @@ const Projects = () => {
               index={0}
             />
 
-            <ProjectsProvider 
+            <ProjectsProvider
               src={"/images/github.png"}
               width={300}
               height={300}

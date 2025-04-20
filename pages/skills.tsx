@@ -1,7 +1,7 @@
 import SkillDataProvider from "@/components/SkillDataProvider";
 import { useThemeContext } from "@/components/ThemeProvider";
 import { Backend_skill, Frontend_skill, Full_stack } from "@/constants";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import React, { useRef } from "react";
 
 const Skills = () => {
@@ -60,6 +60,7 @@ const Skills = () => {
                     width={skill.width}
                     height={skill.height}
                     index={index}
+                    url={skill.url}
                   />
                 </div>
               )

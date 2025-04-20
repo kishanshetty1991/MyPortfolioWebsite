@@ -2,15 +2,24 @@ import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import React, { useRef } from "react";
 import { useThemeContext } from "../ThemeProvider";
+import Link from "next/link";
+import { Url } from "url";
 
 type SkillDataProps = {
   src: string;
   width: number;
   height: number;
   index: number;
+  url: Url;
 };
 
-const SkillDataProvider = ({ src, width, height, index }: SkillDataProps) => {
+const SkillDataProvider = ({
+  src,
+  width,
+  height,
+  index,
+  url,
+}: SkillDataProps) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const animationDelay = 0.3;
@@ -24,26 +33,30 @@ const SkillDataProvider = ({ src, width, height, index }: SkillDataProps) => {
   const subdivColor = mode != "dark" ? "border-black/10" : "border-white/20";
 
   return (
-    <div className={`relative w-fit p-4 rounded-lg ${mainDivColor} shadow-lg`}>
-      {/* Dark Background Overlay */}
-      <div className={`absolute inset-0 ${subdivColor} rounded-lg`}></div>
-      <motion.div
-        ref={ref}
-        initial="hidden"
-        variants={imageVariants}
-        animate={isInView ? "visible" : "hidden"}
-        custom={index}
-        transition={{ delay: index * animationDelay }}
+    <Link href={url} target="_blank" rel="noopener noreferrer">
+      <div
+        className={`relative w-fit p-4 rounded-lg ${mainDivColor} shadow-lg`}
       >
-        <Image
-          src={src}
-          width={width}
-          height={height}
-          alt="Skill Image"
-          aria-label="Skill Image"
-        />
-      </motion.div>
-    </div>
+        {/* Dark Background Overlay */}
+        <div className={`absolute inset-0 ${subdivColor} rounded-lg`}></div>
+        <motion.div
+          ref={ref}
+          initial="hidden"
+          variants={imageVariants}
+          animate={isInView ? "visible" : "hidden"}
+          custom={index}
+          transition={{ delay: index * animationDelay }}
+        >
+          <Image
+            src={src}
+            width={width}
+            height={height}
+            alt="Skill Image"
+            aria-label="Skill Image"
+          />
+        </motion.div>
+      </div>
+    </Link>
   );
 };
 
