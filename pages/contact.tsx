@@ -10,7 +10,7 @@ import Link from "next/link";
 const Contact = () => {
   const component = useRef(null);
   const { mode } = useThemeContext();
-  const formRef = useRef<HTMLFormElement>(null);
+  const formRef = useRef(null);
   const [snackbar, setSnackbar] = useState({
     open: false,
     message: "",
