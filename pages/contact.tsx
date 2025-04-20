@@ -1,6 +1,6 @@
 import { useThemeContext } from "@/components/ThemeProvider";
 import emailJS from "@emailjs/browser";
-import { Box } from "@mui/material";
+import { Alert, Box, Snackbar } from "@mui/material";
 import React, { useRef, useState } from "react";
 import LinkedIn from "@mui/icons-material/LinkedIn";
 import Gmail from "@mui/icons-material/Google";
@@ -10,7 +10,12 @@ import Link from "next/link";
 const Contact = () => {
   const component = useRef(null);
   const { mode } = useThemeContext();
-  const formRef = useRef("");
+  const formRef = useRef<HTMLFormElement>(null);
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: "",
+    severity: "success" as "success" | "error",
+  });
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [loading, setLoading] = useState(false);
   const nameColor = mode === "dark" ? "text-slate-300" : "text-slate-800";
@@ -24,6 +29,10 @@ const Contact = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const showSnackbar = (message: string, severity: "success" | "error") => {
+    setSnackbar({ open: true, message, severity });
+  };
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -31,7 +40,8 @@ const Contact = () => {
     if (
       !process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ||
       !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ||
-      !process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+      !process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ||
+      !formRef.current
     ) {
       throw new Error("Missing required EmailJS environment variables.");
     }
@@ -46,13 +56,16 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          alert("Message sent! I will get back to you soon.");
+          showSnackbar("Message sent! I will get back to you soon.", "success");
           setForm({ name: "", email: "", message: "" });
         },
         (error) => {
           setLoading(false);
           console.error("Failed to send:", error);
-          alert("Oops! Something went wrong. Please try again.");
+          showSnackbar(
+            "Oops! Something went wrong. Please try again.",
+            "error"
+          );
         }
       );
   };
@@ -166,6 +179,21 @@ const Contact = () => {
           </div>
         </form>
       </section>
+
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={() => setSnackbar({ ...snackbar, open: false })}
+        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      >
+        <Alert
+          onClose={() => setSnackbar({ ...snackbar, open: false })}
+          severity={snackbar.severity}
+          sx={{ width: "100%" }}
+        >
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
