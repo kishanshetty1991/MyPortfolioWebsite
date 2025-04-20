@@ -10,7 +10,7 @@ type SkillDataProps = {
   width: number;
   height: number;
   index: number;
-  url: Url;
+  url: string;
 };
 
 const SkillDataProvider = ({
