@@ -20,12 +20,12 @@ const Contact = () => {
       ? "bg-gradient-to-tr from-yellow-500 via-yellow-200 to-yellow-500"
       : "bg-gradient-to-tr from-amber-600 via-pink-600 to-purple-800";
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
     setLoading(true);
 
