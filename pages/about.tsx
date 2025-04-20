@@ -86,15 +86,21 @@ const About = () => {
           {/* Left Side - Text Content */}
           <Box sx={{ flex: 1, textAlign: { xs: "center", md: "left" } }}>
             <Typography
-              variant={{ xs: "h6", sm: "h5", md: "h4", lg: "h2" }} // Dynamically adjust heading size
+              variant="h6" // Dynamically adjust heading size
               sx={{
                 fontFamily: roboto.style.fontFamily,
-                maxWidth: { xs: "95%", sm: "85%", md: "75%", lg: "100%" }, // Control text width
-                textAlign: { xs: "center", md: "left" }, // Center for mobile, left-align for larger screens
+                fontSize: {
+                  xs: "1rem",
+                  sm: "1rem", 
+                  md: "1rem",
+                  lg: "1rem",
+                },
+                maxWidth: { xs: "95%", sm: "85%", md: "75%", lg: "100%" },
+                textAlign: { xs: "center", sm: "center", md: "left", lg: "left" },
                 wordWrap: "break-word",
                 overflowWrap: "break-word",
-                mx: "auto", // Centers the text horizontally on smaller screens
-                lineHeight: { xs: "1.4", md: "1.6" }, // Adjust line height for readability
+                mx: "auto",
+                lineHeight: { xs: "1.4", md: "1.6" },
               }}
             >
               I am a passionate <strong>Full-Stack Developer</strong> with
