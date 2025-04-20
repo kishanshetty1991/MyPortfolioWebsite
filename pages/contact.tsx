@@ -24,10 +24,17 @@ const Contact = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-
   const handleSubmit = (e: any) => {
     e.preventDefault();
     setLoading(true);
+
+    if (
+      !process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ||
+      !process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ||
+      !process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    ) {
+      throw new Error("Missing required EmailJS environment variables.");
+    }
 
     emailJS
       .sendForm(
@@ -121,9 +128,9 @@ const Contact = () => {
             className={`w-full ${backColor} hover:${backColor} ${
               mode === "dark" ? "text-black" : "text-white"
             } font-semibold py-2 rounded-lg transition`}
-            disabled={form.email === "" ? true : false} 
+            disabled={form.email === "" ? true : false}
           >
-            {loading ? "Sending...": "Connect"}
+            {loading ? "Sending..." : "Connect"}
           </button>
 
           <div className="mt-10 space-x-20">
