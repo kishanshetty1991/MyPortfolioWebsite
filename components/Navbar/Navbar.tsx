@@ -21,7 +21,7 @@ import ThemeToggleButton from "../ThemeProviderButton";
 import Drawer from "@/components/Drawer";
 import Image from "next/image";
 
-const pages = ["Home", "About", "Skills", "Projects", "Message"];
+const pages = ["Home", "About", "Skills", "Projects", "Contact"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 export const roboto = Roboto({ subsets: ["latin"], weight: "400" });

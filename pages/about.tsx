@@ -160,14 +160,20 @@ const About = () => {
           </Box>
 
           {/* Right Side - Experience & Education Cards */}
-          <Box sx={{ flex: 1 }}>
+          <Box
+            sx={{
+              flex: 1,
+              overflowX: { xs: "auto", sm: "auto", md: "visible" },
+              width: "100%",
+              pb: 2,
+            }}
+          >
             <Box
               sx={{
                 display: "flex",
-                flexDirection: { xs: "column", sm: "row" }, // Stacks on mobile, row on tablet/desktop
+                flexDirection: { xs: "row", sm: "row", md: "row" }, // horizontal scroll on small/medium
                 gap: 3,
-                width: "100%",
-                marginBottom: 10,
+                width: "max-content",
               }}
             >
               {/* Experience Card */}

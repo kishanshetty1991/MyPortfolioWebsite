@@ -7,7 +7,7 @@ import { Box, CssBaseline } from "@mui/material";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Home from "./index";
 import About from "./about";
-import Message from "./contact";
+import Contact from "./contact";
 import Projects from "./projects";
 import Skills from "./skills";
 import "@/styles/globals.css";
@@ -51,8 +51,8 @@ function ThemedApp({ Component, pageProps }: AppProps) {
         <section id="projects" className="sectionData">
           <Projects />
         </section>
-        <section id="message" className="sectionData">
-          <Message />
+        <section id="contact" className="sectionData">
+          <Contact />
         </section>
       </Box>
     </Box>
