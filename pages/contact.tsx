@@ -94,20 +94,17 @@ const Contact = () => {
       </h1>
 
       <section
-        className="flex items-center justify-center w-full h-full"
+        className="flex items-center justify-center px-4 md:px-8 py-12 w-full"
         style={{
-          transform: "scale(0.9)",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "80vh",
-          width: "100%",
+          transform: "scale(0.95)",
+          height: "auto",
+          minHeight: "80vh",
         }}
       >
         <form
-          ref={formRef} ///Change 1
+          ref={formRef}
           onSubmit={handleSubmit}
-          className="rounded-2xl w-full max-w-sm"
+          className="w-full max-w-lg md:max-w-xl lg:max-w-2xl rounded-2xl p-6 bg-transparent"
         >
           <input
             type="text"
@@ -115,7 +112,7 @@ const Contact = () => {
             name="name"
             onChange={handleChange}
             placeholder="Kindly enter your name"
-            className={`w-full px-4 py-2 mb-8 border border-gray-300 text-black rounded-lg focus:outline-none focus:ring-2`}
+            className="w-full px-4 py-2 mb-6 border border-gray-300 text-black rounded-lg focus:outline-none focus:ring-2"
           />
 
           <input
@@ -124,7 +121,7 @@ const Contact = () => {
             name="email"
             onChange={handleChange}
             placeholder="Please provide a valid email"
-            className={`w-full px-4 py-2 mb-8 border border-gray-300 text-black rounded-lg focus:outline-none focus:ring-2`}
+            className="w-full px-4 py-2 mb-6 border border-gray-300 text-black  rounded-lg focus:outline-none focus:ring-2"
           />
 
           <textarea
@@ -133,7 +130,7 @@ const Contact = () => {
             name="message"
             placeholder="Please include your message or question"
             rows={5}
-            className="w-full px-4 py-2 mb-8 border border-gray-300 text-black rounded-lg focus:outline-none focus:ring-2 resize-none"
+            className="w-full px-4 py-2 mb-6 border border-gray-300 text-black  rounded-lg focus:outline-none focus:ring-2 resize-none"
           />
 
           <button
@@ -141,15 +138,15 @@ const Contact = () => {
             className={`w-full ${backColor} hover:${backColor} ${
               mode === "dark" ? "text-black" : "text-white"
             } font-semibold py-2 rounded-lg transition`}
-            disabled={form.email === "" ? true : false}
+            disabled={form.email === ""}
           >
             {loading ? "Sending..." : "Connect"}
           </button>
 
-          <div className="mt-10 space-x-20">
+          <div className="mt-10 flex justify-center gap-10">
             <Link
               title="LinkedIn"
-              href="linkedin.com/in/kishan-shetty-5aba94163"
+              href="https://linkedin.com/in/kishan-shetty-5aba94163"
               className="group"
               target="_blank"
               rel="noopener noreferrer"

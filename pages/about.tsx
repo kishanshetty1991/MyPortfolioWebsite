@@ -23,7 +23,7 @@ const About = () => {
   const calculateExperience = () => moment().year() - 2022;
 
   const downloadResume = () => {
-    const resumePath = "/Kishan_Resume_Nov_24.pdf";
+    const resumePath = "/Kishan_Resume_Apr_2025.pdf";
 
     // Validate file type (Only allow PDF downloads)
     if (!resumePath.endsWith(".pdf")) {
