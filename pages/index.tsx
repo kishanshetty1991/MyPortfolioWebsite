@@ -1,6 +1,6 @@
 import { useThemeContext } from "@/components/ThemeProvider";
 import { Box } from "@mui/material";
-import Shapes from '@/components/ThreeD/Shapes';
+import Shapes from "@/components/ThreeD/Shapes";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
@@ -81,7 +81,7 @@ export const Home = () => {
             </span>
           </h1>
           <span
-            className={`job-title block ${gradientStyles} bg-clip-text pl-1 text-2xl font-bold uppercase tracking-[.2em] text-transparent opacity-100 md:text-4xl`}
+            className={`job-title w-full text-center block ${gradientStyles} bg-clip-text pl-1 text-2xl font-bold uppercase tracking-[.2em] text-transparent opacity-100 md:text-4xl`}
             aria-label="FullStack Developer"
           >
             FullStack Developer
