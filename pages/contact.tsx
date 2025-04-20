@@ -105,7 +105,7 @@ const Contact = () => {
         }}
       >
         <form
-          ref={formRef}
+          ref={formRef} ///Change 1
           onSubmit={handleSubmit}
           className="rounded-2xl w-full max-w-sm"
         >
