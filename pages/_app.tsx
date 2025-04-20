@@ -21,13 +21,15 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <ThemeProvider>
         <CssBaseline />
-        <ThemedApp Component={Component} pageProps={pageProps} />
+        <ThemedApp>
+          <Component {...pageProps} />
+        </ThemedApp>
       </ThemeProvider>
     </>
   );
 }
 
-function ThemedApp({ Component, pageProps }: AppProps) {
+const ThemedApp = ({ children }: { children: React.ReactNode }) => {
   const theme = useTheme();
   return (
     <Box
@@ -57,4 +59,4 @@ function ThemedApp({ Component, pageProps }: AppProps) {
       </Box>
     </Box>
   );
-}
+};
